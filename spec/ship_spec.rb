@@ -13,20 +13,22 @@ it 'initializes' do
 
 end 
 
-# it 'ship can be sunk' do 
+it 'ship can be sunk' do 
 
-#   cruiser = Ship.new("Cruiser", 3)
-#   expect(cruiser.health).to eq(3)
-#   expect(cruiser.sunk?).to eq(false)
-#   cruiser.hit
-#   expect(cruiser.health).to eq(2)
-#   cruiser.hit 
-#   expect(cruiser.health).to eq(1)
-#   expect(cruiser.sunk?).to eq(false)
-#   cruiser.hit
-#   expect(cruiser.sunk?).to eq(true)
+  cruiser = Ship.new("Cruiser", 3)
+  expect(cruiser.health).to eq(3)
+  expect(cruiser.sunk?).to eq(false)
 
-# end 
+  cruiser.hit
+  # require 'pry'; binding.pry 
+  expect(cruiser.health).to eq(2)
+  cruiser.hit 
+  expect(cruiser.health).to eq(1)
+  expect(cruiser.sunk?).to eq(false)
+  cruiser.hit
+  expect(cruiser.sunk?).to eq(true)
+
+end 
 
 
 
