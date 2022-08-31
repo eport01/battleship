@@ -5,9 +5,9 @@ RSpec.describe Ship do
 
 it 'initializes' do 
   
-  cruiser = Ship.new("Steve", 3)
+  cruiser = Ship.new("Cruiser", 3)
 
-  expect(cruiser.name).to eq("Steve")
+  expect(cruiser.name).to eq("Cruiser")
   expect(cruiser.length).to eq(3)
 
 
