@@ -8,15 +8,17 @@ class Cell
   end
 
   def empty?
-    if @ship != nil 
-      false
-    else
-      true 
-    end 
+    @empty 
+    # if @ship != nil 
+    #   false
+    # else
+    #   true 
+    # end 
   end
 
   def place_ship(ship_type)
     @ship = ship_type  
+    @empty = false 
   end
 
   def fired_upon?
