@@ -1,35 +1,43 @@
 class Cell
-  attr_reader :coordinate, :empty, :ship, :fired_upon, :fire_upon
+  attr_reader :coordinate, :empty, :ship
   def initialize(coordinate)
     @coordinate = coordinate
     @empty = true
-    @ship = ship
-    @fired_upon = false 
+    @ship = nil
+    @fired_upon = false
   end
 
   def empty?
-    @empty 
-    # if @ship != nil 
-    #   false
-    # else
-    #   true 
-    # end 
+    @empty
   end
 
-  def place_ship(ship_type)
-    @ship = ship_type  
-    @empty = false 
+  def place_ship(ship_object)
+    @ship = ship_object
+    @empty = false
   end
 
   def fired_upon?
-    fired_upon
-  end 
+      @fired_upon
+    end
 
   def fire_upon
-    if @ship.health != 0  
-      @ship.hit 
-      @fired_upon = true 
-    end 
-  end 
+    @fired_upon =true
+    if @empty == false
+      @ship.hit
+    end
+  end
 
+  def render
+    if @fired_upon == false
+      '.'
+    elsif @empty == true && @fired_upon == true
+      'M'
+    elsif @empty == false && @fired_upon == true
+      if @ship.health > 0
+        'H'
+      else
+        'X'
+      end
+    end
+  end
 end
