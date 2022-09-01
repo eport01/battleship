@@ -4,16 +4,11 @@ class Cell
     @coordinate = coordinate
     @empty = true
     @ship = nil
-    @fired_upon =false
+    @fired_upon = false
   end
 
   def empty?
     @empty
-    # if @ship != nil
-    #   false
-    # else
-    #   true
-    # end
   end
 
   def place_ship(ship_object)
@@ -26,17 +21,23 @@ class Cell
     end
 
   def fire_upon
-    if @ship.health != 0
+    @fired_upon =true
+    if @empty == false
       @ship.hit
-      @fired_upon = true
     end
   end
 
   def render
     if @fired_upon == false
       '.'
+    elsif @empty == true && @fired_upon == true
+      'M'
+    elsif @empty == false && @fired_upon == true
+      if @ship.health > 0
+        'H'
+      else
+        'X'
+      end
     end
   end
-
-  
 end
