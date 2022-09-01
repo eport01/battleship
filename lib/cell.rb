@@ -27,8 +27,10 @@ class Cell
     end
   end
 
-  def render
-    if @fired_upon == false
+  def render(default = false)
+    if default == true
+      'S'
+    elsif @fired_upon == false
       '.'
     elsif @empty == true && @fired_upon == true
       'M'
