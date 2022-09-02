@@ -27,6 +27,11 @@ class Board
 
   def valid_placement?(ship_object, coord_array)
     coord_array.length == ship_object.length 
+    if @consecutive_cells == true 
+      true 
+    else
+      false 
+    end 
   end 
 
   def all_valid_coords?(coord_array)
