@@ -1,5 +1,5 @@
 class Board 
-  attr_reader :cells
+  attr_reader :cells, :first_consecutive, :valid_placement
   def initialize
     @cells = {
       "A1" => Cell.new("A1"),
@@ -17,18 +17,45 @@ class Board
       "D1" => Cell.new("D1"),
       "D2" => Cell.new("D2"),
       "D3" => Cell.new("D3"),
-      "D4" => Cell.new("D4")}
+      "D4" => Cell.new("D4")}  
   end 
 
   def valid_coordinate?(coordinate)
     @cells.keys.include?(coordinate) 
   end 
 
-  def valid_placement?(ship_object, coord_array)
-    coord_array.length == ship_object.length 
-     
+  # def valid_placement?(ship_object, coord_array)
+  #   coord_array.length == ship_object.length 
+  #   # @first_consecutive
+  # end 
 
-  end 
+  # def first_consecutive  
+  def valid_placement?(ship_object, coord_array)
+    cons_nums2 = coord_array[0].byteslice(-1).to_i + 1 == coord_array[1].byteslice(-1).to_i || coord_array[1].byteslice(-1).to_i + 1 == coord_array[2].byteslice(-1).to_i
+    # cons_nums3 = coord_array[1].byteslice(-1).to_i + 1 == coord_array[2].byteslice(-1).to_i
+    cons_lets = coord_array[0].chr == coord_array[1].chr || coord_array[1].chr == coord_array[2].chr
+    coord_ship_length = coord_array.length == ship_object.length 
+    if cons_nums2 == true && cons_lets == true && coord_ship_length == true 
+      @valid_placement = true 
+    # elsif @ship_object == cruiser && cons_nums3 == true && cons_lets == true && coord_ship_length == true 
+    #   @valid_placement = true 
+    else
+      @valid_placement = false 
+    end 
+
+
+    # if coord_array[0].byteslice(-1).to_i + 1 == coord_array[1].byteslice(-1).to_i
+    #   @valid_placement = true 
+    # elsif coord_array[0].chr == coord_array[1].chr || coord_array[1].chr == coord_array[2].chr
+    #   @valid_placement = true 
+    # else
+    #   @valid_placement = false 
+    # end 
+  end  
 
 end 
+
+
+# coord_array[0]
 #cells.keys is array of just the keys 
+#if letters are the same and the difference 
