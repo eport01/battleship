@@ -23,4 +23,12 @@ class Board
   def valid_coordinate?(coordinate)
     @cells.keys.include?(coordinate) 
   end 
+
+  def valid_placement?(ship_object, coord_array)
+    coord_array.length == ship_object.length 
+     
+
+  end 
+
 end 
+#cells.keys is array of just the keys 
