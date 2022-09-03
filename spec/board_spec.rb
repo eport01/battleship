@@ -91,7 +91,7 @@ RSpec.describe Board do
     board.place(cruiser, ["A1", "A2", "A3"])
     submarine = Ship.new("Submarine", 2)
 
-    expect( board.valid_placement?(submarine, ["A1", "B1"])).to eq(false)
+    expect(board.valid_placement?(submarine, ["A1", "B1"])).to eq(false)
   end
 
   it 'check if coord array is empty' do
@@ -99,7 +99,9 @@ RSpec.describe Board do
     cruiser = Ship.new("Cruiser", 3)
 
     board.place(cruiser, ["A1", "A2", "A3"])
-    
+    expect(board.coord_empty?(["A1", "A2", "A3"])).to eq(false)
+    expect(board.coord_empty?(["B1", "B2"])).to eq(true)
+
   end
 
   xit 'has a rendered board' do
