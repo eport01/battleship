@@ -65,11 +65,13 @@ class Board
     coord_array.all? {|coord| @cells[coord].empty == true}
   end
 
-  def render(rendered = false)
-    if rendered == false
-      'S'
-    end
+  def render(show_ships = false)
     @cells.map do |coord_key, coord_value|
+      if show_ships == true
+        if coord_value.empty == false
+          'S'
+        end
+      end
       if coord_value.fired_upon == false
         '.'
       elsif coord_value.empty == true && coord_value.fired_upon == true
@@ -82,6 +84,10 @@ class Board
         end
       end
     end
+  end
+
+  def board_setup
+    
   end
 end
   # def render(default = false)
