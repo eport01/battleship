@@ -61,6 +61,10 @@ class Board
     end
   end
 
+  def coord_empty?(coord_array)
+    coord_array.all? {|coord| @cells[coord].empty == true}
+  end
+
 end
 
   # def all_valid_coords?(coord_array)
