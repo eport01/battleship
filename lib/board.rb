@@ -44,7 +44,7 @@ class Board
       valid = false
     end
 
-    if valid == true && coord_array.length == ship_object.length
+    if valid == true && coord_array.length == ship_object.length && coord_empty?(coord_array) == true
       true
     else
       false
