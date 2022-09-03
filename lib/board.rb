@@ -1,10 +1,10 @@
 require './lib/cell'
+require './lib/ship'
 
 class Board
-  attr_reader
-
+  attr_reader :cells, :first_consecutive, :valid_placement
   def initialize
-    @cell = {
+    @cells = {
       "A1" => Cell.new("A1"),
       "A2" => Cell.new("A2"),
       "A3" => Cell.new("A3"),
@@ -20,92 +20,80 @@ class Board
       "D1" => Cell.new("D1"),
       "D2" => Cell.new("D2"),
       "D3" => Cell.new("D3"),
-      "D4" => Cell.new("D4"),
-    }
+      "D4" => Cell.new("D4")}
+    # @cells = cells
   end
+
+  # def cell_pairs
+  #   @cells.each_cons(2) {|key, value| p (key, value)}
+  # end
 
   def valid_coordinate?(coordinate)
     @cells.keys.include?(coordinate)
   end
 
-  def all_valid_coordinates?(coordinate_array)
-    coordinate_array.all?{|coordinate| self.valid_coordinate?(coordinate)}
-  end
+  def valid_placement?(ship_object, coord_array)
+    coord_letters = coord_array.map {|letter| letter.chr}
+    coord_numbers = coord_array.map {|number| number[1].to_i}
 
-  def consecutive_letter?(coordinate_1, coordinate_2)
-    coordinate_1[0].ord == coordinate_2[0].ord +1
-  end
+    if coord_letters.uniq.size <= 1
+      valid = coord_numbers.each_cons(2).all? {|left, right| left + 1 == right}
+    elsif coord_numbers.uniq.size <= 1
+      valid = coord_letters.each_cons(2).all? {|left, right| left.ord + 1 == right.ord}
+    else
+      valid = false
+    end
 
-  def consecutive_number?(coordinate_1, coordinate_2)
-    coordinate_1[1].ord == coordinate_2[1].ord +1
-  end
-
-  def consecutive_cells?(coordinate_pair)
-    coordinate_1 = coordinate_pair[0]
-    coordinate_2 = coordinate_pair[1]
-    if coordinate_1[0] == coordinate_2[0] && consecutive_number?(coordinate_1, coordinate_2)
-      true
-    elsif coordinate_1[1] == coordinate_2[1] && consecutive_letter?(coordinate_1, coordinate_2)
+    if valid == true && coord_array.length == ship_object.length
       true
     else
       false
     end
   end
 
-  def all_consective_cells?(coordinate_array)
-    coordinate_array.each_cons(2){|coordinate| consecutive_cells?(coordinate)}
-  end
-
-
-  def ship_present?(coordinate_array)
-
-  end
-
-
-  def valid_placement?(ship_type, coordinate_array)
-    coordinate_array.length == ship_type.length
-    if @consecutive_cells == true
-      true 
+  def place(ship_object, coord_array)
+    if valid_placement?(ship_object, coord_array) == true
+      coord_array.map do |coord|
+        @cells[coord].place_ship(ship_object)
+      end
     else
-      false
+      "Placement not valid, please try again."
     end
   end
+
 end
 
+  # def all_valid_coords?(coord_array)
+  #   @coord_array.all? {|coord| self.valid_coordinate?(coord)}
+
+  # end
 
 
+  # def consecutive_number?(coord1, coord2)
+  #   @coord1[1].ord +1 == @coord2[1].ord
+  # end
+
+  # def consecutive_letter?(coord1, coord2)
+  #   @coord1[0].ord +1 == @coord2[0].ord
+  # end
+
+  # def consecutive_cells?(coord_array)
+  #   @coord1 = @coord_array[0]
+  #   @coord2 = @coord_array[1]
+  #   if @coord1[0] == @coord2[0] && consecutive_number?(coord1, coord2)
+  #     true
+  #   elsif @coord1[1] == @coord2[1] && consecutive_letter?(coord1, coord2)
+  #     true
+  #   else
+  #     false
+  #   end
+  # end
+
+  # def all_consecutive_cells?(coord_array)
+  #   #arrays of pairs, instead of looking at 1 element, it looks at a smaller array of whatever size you specify
+  #   coord_array.each_cons(2) {|coord_pair| consecutive_cells?(coord_pair)}
+  #   # cells.each_cons(2) {|coord_pair| consecutive_cells?(coord_pair)}
+  # end
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-# attr_reader :size, :cells
-#
-# def initialize(size)
-#   @size = size.to_i
-#   @letters_array = ("A".."Z").to_a
-#   @cells = create_cells
-# end
-#
-# def create_cells
-#   hash = {}
-#
-#   @letters_array.first(@size).each do |letter|
-#     @cell_counter = 0
-#     @size.times do
-#       @cell_counter += 1
-#       if hash[letter + "#{@cell_counter}"].nil?
-#         hash[letter + "#{@cell_counter}"] = Cell.new(letter + "#{@cell_counter}")
-#       end
-#     end
-#   end
-#   hash
+#could also use each.cons(2) for the cells array and check that the keys are consecutive vertical and horizontal
