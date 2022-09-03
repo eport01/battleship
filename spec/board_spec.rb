@@ -104,12 +104,13 @@ RSpec.describe Board do
 
   end
 
-  xit 'has a rendered board' do
+  it 'has a rendered board' do
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
-    submarine = Ship.new("Submarine", 2)
-    board.place(cruiser, ["A1", "A2", "A3"])
 
+    board.place(cruiser, ["A1", "A2", "A3"])
+    expect(board.render).to eq()
+    expect(board.render(true)).to eq()
   end
 
 
