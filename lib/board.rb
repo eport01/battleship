@@ -66,9 +66,42 @@ class Board
   end
 
   def render(rendered = false)
-    
+    if rendered == false
+      'S'
+    end
+    @cells.map do |coord_key, coord_value|
+      if coord_value.fired_upon == false
+        '.'
+      elsif coord_value.empty == true && coord_value.fired_upon == true
+        'M'
+      elsif coord_value.empty == false && coord_value.fired_upon == true
+        if coord_value.ship.health > 0
+          'H'
+        else
+          'X'
+        end
+      end
+    end
   end
 end
+  # def render(default = false)
+  #   if default == true
+  #     'S'
+  #   elsif @fired_upon == false
+  #     '.'
+  #   elsif @empty == true && @fired_upon == true
+  #     'M'
+  #   elsif @empty == false && @fired_upon == true
+  #     if @ship.health > 0
+  #       'H'
+  #     else
+  #       'X'
+  #     end
+  #   end
+  # end
+
+
+
 
   # def all_valid_coords?(coord_array)
   #   @coord_array.all? {|coord| self.valid_coordinate?(coord)}
