@@ -66,80 +66,11 @@ class Board
   end
 
   def render(show_ships = false)
-    @cells.map do |coord_key, coord_value|
-      if show_ships == true
-        if coord_value.empty == false
-          'S'
-        end
-      end
-      if coord_value.fired_upon == false
-        '.'
-      elsif coord_value.empty == true && coord_value.fired_upon == true
-        'M'
-      elsif coord_value.empty == false && coord_value.fired_upon == true
-        if coord_value.ship.health > 0
-          'H'
-        else
-          'X'
-        end
-      end
-    end
-  end
-
-  def board_setup
-    
+    "  1 2 3 4 \n" +
+    "A #{cells['A1'].render} #{cells['A2'].render} #{cells['A3'].render} #{cells['A4'].render} \n" +
+    "B #{cells['B1'].render} #{cells['B2'].render} #{cells['B3'].render} #{cells['B4'].render} \n" +
+    "C #{cells['C1'].render} #{cells['C2'].render} #{cells['C3'].render} #{cells['C4'].render} \n" +
+    "D #{cells['D1'].render} #{cells['D2'].render} #{cells['D3'].render} #{cells['D4'].render} \n"
   end
 end
-  # def render(default = false)
-  #   if default == true
-  #     'S'
-  #   elsif @fired_upon == false
-  #     '.'
-  #   elsif @empty == true && @fired_upon == true
-  #     'M'
-  #   elsif @empty == false && @fired_upon == true
-  #     if @ship.health > 0
-  #       'H'
-  #     else
-  #       'X'
-  #     end
-  #   end
-  # end
-
-
-
-
-  # def all_valid_coords?(coord_array)
-  #   @coord_array.all? {|coord| self.valid_coordinate?(coord)}
-
-  # end
-
-
-  # def consecutive_number?(coord1, coord2)
-  #   @coord1[1].ord +1 == @coord2[1].ord
-  # end
-
-  # def consecutive_letter?(coord1, coord2)
-  #   @coord1[0].ord +1 == @coord2[0].ord
-  # end
-
-  # def consecutive_cells?(coord_array)
-  #   @coord1 = @coord_array[0]
-  #   @coord2 = @coord_array[1]
-  #   if @coord1[0] == @coord2[0] && consecutive_number?(coord1, coord2)
-  #     true
-  #   elsif @coord1[1] == @coord2[1] && consecutive_letter?(coord1, coord2)
-  #     true
-  #   else
-  #     false
-  #   end
-  # end
-
-  # def all_consecutive_cells?(coord_array)
-  #   #arrays of pairs, instead of looking at 1 element, it looks at a smaller array of whatever size you specify
-  #   coord_array.each_cons(2) {|coord_pair| consecutive_cells?(coord_pair)}
-  #   # cells.each_cons(2) {|coord_pair| consecutive_cells?(coord_pair)}
-  # end
-
-
-#could also use each.cons(2) for the cells array and check that the keys are consecutive vertical and horizontal
+    
