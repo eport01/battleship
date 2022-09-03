@@ -28,7 +28,7 @@ class Cell
   end
 
   def render(default = false)
-    if default == true
+    if default == true && empty == false
       'S'
     elsif @fired_upon == false
       '.'

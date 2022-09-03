@@ -66,11 +66,28 @@ class Board
   end
 
   def render(show_ships = false)
-    "  1 2 3 4 \n" +
-    "A #{cells['A1'].render} #{cells['A2'].render} #{cells['A3'].render} #{cells['A4'].render} \n" +
-    "B #{cells['B1'].render} #{cells['B2'].render} #{cells['B3'].render} #{cells['B4'].render} \n" +
-    "C #{cells['C1'].render} #{cells['C2'].render} #{cells['C3'].render} #{cells['C4'].render} \n" +
-    "D #{cells['D1'].render} #{cells['D2'].render} #{cells['D3'].render} #{cells['D4'].render} \n"
+    # if show_ships == true
+    #   @cells.values.render(true)
+        # value.select do |v|
+        #   if v.empty == false
+        #     v.render(true)
+        #   end
+        # end
+# require "pry"; binding.pry
+    # if show_ships == true
+      "  1 2 3 4 \n" +
+      "A #{cells['A1'].render(show_ships)} #{cells['A2'].render(show_ships)} #{cells['A3'].render(show_ships)} #{cells['A4'].render(show_ships)} \n" +
+      "B #{cells['B1'].render(show_ships)} #{cells['B2'].render(show_ships)} #{cells['B3'].render(show_ships)} #{cells['B4'].render(show_ships)} \n" +
+      "C #{cells['C1'].render(show_ships)} #{cells['C2'].render(show_ships)} #{cells['C3'].render(show_ships)} #{cells['C4'].render(show_ships)} \n" +
+      "D #{cells['D1'].render(show_ships)} #{cells['D2'].render(show_ships)} #{cells['D3'].render(show_ships)} #{cells['D4'].render(show_ships)} \n"
+    # else
+      # "  1 2 3 4 \n" +
+      # "A #{cells['A1'].render} #{cells['A2'].render} #{cells['A3'].render} #{cells['A4'].render} \n" +
+      # "B #{cells['B1'].render} #{cells['B2'].render} #{cells['B3'].render} #{cells['B4'].render} \n" +
+      # "C #{cells['C1'].render} #{cells['C2'].render} #{cells['C3'].render} #{cells['C4'].render} \n" +
+      # "D #{cells['D1'].render} #{cells['D2'].render} #{cells['D3'].render} #{cells['D4'].render} \n"
+    # end
   end
+
+
 end
-    
