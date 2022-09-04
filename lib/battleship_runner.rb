@@ -7,8 +7,8 @@ require './player'
 
 
 game = Game.new
-user = Player.new('User', user_board = Board.new) 
-computer = Player.new('Computer', computer_board = Board.new) 
+user = Player.new('User') 
+computer = Player.new('Computer') 
 #player may need some arguments
 # require 'pry'; binding.pry 
 game.start 
