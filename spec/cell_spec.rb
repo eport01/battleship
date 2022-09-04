@@ -5,7 +5,8 @@ require './lib/cell'
 RSpec.describe Cell do
   it 'initialize' do
     cell = Cell.new('B4')
-
+    
+    expect(cell).to be_an_instance_of Cell
     expect(cell.coordinate).to eq('B4')
     expect(cell.ship).to eq(nil)
     expect(cell.empty?).to eq(true)
@@ -43,7 +44,7 @@ RSpec.describe Cell do
     it 'can be rendered with an optional arguement' do
       cell_2 = Cell.new("C3")
       cruiser = Ship.new("Cruiser", 3)
-      
+
       cell_2.place_ship(cruiser)
       expect(cell_2.render).to eq('.')
       expect(cell_2.render(true)).to eq('S')
