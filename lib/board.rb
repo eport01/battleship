@@ -1,7 +1,9 @@
 require './lib/cell'
 require './lib/ship'
 
+
 class Board
+
   attr_reader :cells, :first_consecutive, :valid_placement
   def initialize
     @cells = {
@@ -20,6 +22,7 @@ class Board
       "D1" => Cell.new("D1"),
       "D2" => Cell.new("D2"),
       "D3" => Cell.new("D3"),
+
       "D4" => Cell.new("D4")}
     # @cells = cells
   end
@@ -32,16 +35,17 @@ class Board
     @cells.keys.include?(coordinate)
   end
 
+
   def valid_placement?(ship_object, coord_array)
     coord_letters = coord_array.map {|letter| letter.chr}
     coord_numbers = coord_array.map {|number| number[1].to_i}
-
     if coord_letters.uniq.size <= 1
       valid = coord_numbers.each_cons(2).all? {|left, right| left + 1 == right}
     elsif coord_numbers.uniq.size <= 1
       valid = coord_letters.each_cons(2).all? {|left, right| left.ord + 1 == right.ord}
     else
       valid = false
+
     end
 
     if valid == true && coord_array.length == ship_object.length && coord_empty?(coord_array) == true
@@ -91,3 +95,8 @@ class Board
 
 
 end
+
+
+
+    
+
