@@ -4,7 +4,7 @@
 
 class Board
 
-  attr_reader :cells, :first_consecutive, :valid_placement
+  attr_reader :cells, :first_consecutive, :valid_placement, :valid, :coord_array 
   def initialize
     @cells = {
       "A1" => Cell.new("A1"),
@@ -22,7 +22,7 @@ class Board
       "D1" => Cell.new("D1"),
       "D2" => Cell.new("D2"),
       "D3" => Cell.new("D3"),
-      "D4" => Cell.new("D4")}
+      "D4" => Cell.new("D4")} 
   end
 
   def valid_coordinate?(coordinate)
@@ -33,13 +33,13 @@ class Board
     coord_letters = coord_array.map {|letter| letter.chr}
     coord_numbers = coord_array.map {|number| number[1].to_i}
     if coord_letters.uniq.size <= 1
-      valid = coord_numbers.each_cons(2).all? {|left, right| left + 1 == right}
+      @valid = coord_numbers.each_cons(2).all? {|left, right| left + 1 == right}
     elsif coord_numbers.uniq.size <= 1
-      valid = coord_letters.each_cons(2).all? {|left, right| left.ord + 1 == right.ord}
+      @valid = coord_letters.each_cons(2).all? {|left, right| left.ord + 1 == right.ord}
     else
-      valid = false
+      @valid = false
     end
-    if valid == true && coord_array.length == ship_object.length && coord_empty?(coord_array) == true
+    if @valid == true && coord_array.length == ship_object.length && coord_empty?(coord_array) == true
       true
     else
       false

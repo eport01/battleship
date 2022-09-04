@@ -24,5 +24,4 @@ RSpec.describe Game do
   #   game = Game.new(start)
   # end 
 
-
 end 

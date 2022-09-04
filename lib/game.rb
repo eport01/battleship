@@ -2,8 +2,7 @@ class Game
   attr_reader :user, :computer 
   attr_accessor :start 
   def initialize
-    # @user = user 
-    # @computer = computer 
+  
 
 
 
@@ -21,13 +20,15 @@ class Game
       puts "Entry invalid. Please enter 'p' for play or 'q' for quit."
     end  
   end 
+
  
+  # user.game_board.render 
 
-  def game_setup 
+
+  
 
 
-  end 
 end 
 
-game = Game.new
-puts game.start 
+# game = Game.new
+# puts game.start 
