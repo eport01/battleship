@@ -1,5 +1,5 @@
-require './lib/cell'
-require './lib/ship'
+# require './lib/cell'
+# require './lib/ship'
 
 
 class Board
