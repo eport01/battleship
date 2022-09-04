@@ -22,19 +22,12 @@ class Board
       "D1" => Cell.new("D1"),
       "D2" => Cell.new("D2"),
       "D3" => Cell.new("D3"),
-
       "D4" => Cell.new("D4")}
-    # @cells = cells
   end
-
-  # def cell_pairs
-  #   @cells.each_cons(2) {|key, value| p (key, value)}
-  # end
 
   def valid_coordinate?(coordinate)
     @cells.keys.include?(coordinate)
   end
-
 
   def valid_placement?(ship_object, coord_array)
     coord_letters = coord_array.map {|letter| letter.chr}
@@ -45,9 +38,7 @@ class Board
       valid = coord_letters.each_cons(2).all? {|left, right| left.ord + 1 == right.ord}
     else
       valid = false
-
     end
-
     if valid == true && coord_array.length == ship_object.length && coord_empty?(coord_array) == true
       true
     else
@@ -70,30 +61,12 @@ class Board
   end
 
   def render(show_ships = false)
-    # if show_ships == true
-    #   @cells.values.render(true)
-        # value.select do |v|
-        #   if v.empty == false
-        #     v.render(true)
-        #   end
-        # end
-# require "pry"; binding.pry
-    # if show_ships == true
       "  1 2 3 4 \n" +
       "A #{cells['A1'].render(show_ships)} #{cells['A2'].render(show_ships)} #{cells['A3'].render(show_ships)} #{cells['A4'].render(show_ships)} \n" +
       "B #{cells['B1'].render(show_ships)} #{cells['B2'].render(show_ships)} #{cells['B3'].render(show_ships)} #{cells['B4'].render(show_ships)} \n" +
       "C #{cells['C1'].render(show_ships)} #{cells['C2'].render(show_ships)} #{cells['C3'].render(show_ships)} #{cells['C4'].render(show_ships)} \n" +
       "D #{cells['D1'].render(show_ships)} #{cells['D2'].render(show_ships)} #{cells['D3'].render(show_ships)} #{cells['D4'].render(show_ships)} \n"
-    # else
-      # "  1 2 3 4 \n" +
-      # "A #{cells['A1'].render} #{cells['A2'].render} #{cells['A3'].render} #{cells['A4'].render} \n" +
-      # "B #{cells['B1'].render} #{cells['B2'].render} #{cells['B3'].render} #{cells['B4'].render} \n" +
-      # "C #{cells['C1'].render} #{cells['C2'].render} #{cells['C3'].render} #{cells['C4'].render} \n" +
-      # "D #{cells['D1'].render} #{cells['D2'].render} #{cells['D3'].render} #{cells['D4'].render} \n"
-    # end
   end
-
-
 end
 
 
