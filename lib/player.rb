@@ -5,9 +5,9 @@ require './game'
 
 class Player 
   attr_reader :type, :a_board  
-  def initialize(type, a_board)
+  def initialize(type)
     @type = type 
-    @a_board = Board.new 
+    @a_board = a_board 
 
   end 
 

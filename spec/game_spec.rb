@@ -7,17 +7,22 @@ require './lib/game'
 
 RSpec.describe Game do 
   it 'initializes' do 
-    game = Game.new
-    expect(game).to be_an_instance_of(Game)
-
+    game = Game.new(start)
+    # expect(game(start)).to be_an_instance_of(Game)
+    # require 'pry'; binding.pry 
   end 
 
-  it 'prints welcome message' do 
-    game = Game.new
-    expect(game).to eq("Welcome to BATTLESHIP
-      Enter p to play. Enter q to quit.")
+  # it 'start' do 
+  #   game = Game.new
+  #   expect(game(start)).to eq(
+  #     "Welcome to BATTLESHIP \n" +
+  #     "Enter p to play. Enter q to quit."
+  #   )
+  # end 
 
-  end 
+  # it 'user chooses to play or quit' do 
+  #   game = Game.new(start)
+  # end 
 
 
 end 
