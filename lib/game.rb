@@ -14,8 +14,9 @@ class Game
       @computer.random_placement_cruiser
       @computer.random_placement_submarine
       @user.user_cruiser_placement
-      turn 
-      #@user.user_submarine_placement NEED TO MAKE
+      @user.user_submarine_placement 
+      
+      # turn 
       # while nobody has won
       
       #   @turn

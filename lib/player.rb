@@ -70,6 +70,23 @@ class Player
       end
     end
 
+    def user_submarine_placement
+      puts @game_board.render(true)
+      puts "Enter the squares for the Submarine (2 spaces):"
+      check = false
+      while check == false
+        input = gets.chomp # A1 A2 
+        input = input.split(/\W+/)
+        check = @game_board.valid_placement?(@submarine, input)
+        if check == true
+          @game_board.place(@submarine, input)
+          puts @game_board.render(true)
+        else
+          puts "Those are invalid coordinates. Please try again:"
+        end
+      end
+    end 
+
 
   end 
 
