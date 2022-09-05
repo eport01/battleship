@@ -29,7 +29,17 @@ class Cell
 
   def render(default = false)
     if default == true && empty == false
-      'S'
+      if @fired_upon == true
+        if @ship.health > 0
+          'H'
+        else 
+          'X'
+        end
+      else
+        'S'
+      end
+    
+
     elsif @fired_upon == false
       '.'
     elsif @empty == true && @fired_upon == true
