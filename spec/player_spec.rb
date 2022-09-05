@@ -8,7 +8,6 @@ require './player'
 RSpec.describe Player do 
 
   it 'checks that a player is an instance of player class' do 
-    # require 'pry'; binding.pry 
     user = Player.new('User')
     expect(user).to be_an_instance_of(Player)
   end 
