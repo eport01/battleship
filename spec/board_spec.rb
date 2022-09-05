@@ -1,7 +1,7 @@
 require 'rspec'
 require './lib/board'
-
 require './lib/ship'
+require './lib/player'
 
 RSpec.describe Board do
 
@@ -12,9 +12,7 @@ RSpec.describe Board do
 
   it 'has cells' do
     board = Board.new
-  # require 'pry'; binding.pry
     expect(board.cells.count).to eq(16)
-
   end
 
   it 'tests that a coordinate is valid' do
@@ -31,20 +29,15 @@ RSpec.describe Board do
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
-  # require 'pry'; binding.pry
     expect(board.valid_placement?(cruiser, ["A1", "A2"])).to eq(false)
     expect(board.valid_placement?(submarine, ["A2", "A3", "A4"])).to eq(false)
-
-  # require 'pry'; binding.pry
+ 
   end
   it 'coordinates are consecutive' do
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
     submarine = Ship.new("Submarine", 2)
-  # require 'pry'; binding.pry
     expect(board.valid_placement?(cruiser,["A1", "A2", "A4"])).to eq(false)
-      # require 'pry'; binding.pry
-
     expect(board.valid_placement?(submarine, ["A1", "C1"])).to eq(false)
     expect(board.valid_placement?(cruiser, ["A3", "A2", "A1"])).to eq(false)
     expect(board.valid_placement?(submarine, ["C1", "B1"])).to eq(false)
@@ -58,7 +51,6 @@ RSpec.describe Board do
 
     expect(board.valid_placement?(cruiser, ["A1", "B2", "C3"])).to eq(false)
     expect(board.valid_placement?(submarine, ["C2", "D3"])).to eq(false)
-
   end
 
 
@@ -69,8 +61,6 @@ RSpec.describe Board do
 
     expect(board.valid_placement?(submarine, ["A1", "A2"])).to eq(true)
     expect(board.valid_placement?(cruiser, ["B1", "C1", "D1"])).to eq(true)
-
-
   end
 
   it 'can place ships' do
@@ -81,6 +71,7 @@ RSpec.describe Board do
     cell_1 = board.cells["A1"]
     cell_2 = board.cells["A2"]
     cell_3 = board.cells["A3"]
+
     expect(cell_1.ship).to eq(cruiser)
     expect(cell_2.ship).to eq(cruiser)
     expect(cell_3.ship).to eq(cruiser)
@@ -110,9 +101,8 @@ RSpec.describe Board do
   it 'has a rendered board' do
     board = Board.new
     cruiser = Ship.new("Cruiser", 3)
-
     board.place(cruiser, ["A1", "A2", "A3"])
-    # require "pry"; binding.pry
+  
     expect(board.render).to eq(
       "  1 2 3 4 \n" +
       "A . . . . \n" +
@@ -126,7 +116,5 @@ RSpec.describe Board do
       "C . . . . \n" +
       "D . . . . \n")
   end
-
-
 end
 

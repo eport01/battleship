@@ -11,14 +11,20 @@ class Cell
     @empty
   end
 
+  def make_empty
+    @empty = true
+    @ship = nil
+    @fired_upon = false
+  end
+
   def place_ship(ship_object)
     @ship = ship_object
     @empty = false
   end
 
   def fired_upon?
-      @fired_upon
-    end
+    @fired_upon
+  end
 
   def fire_upon
     @fired_upon = true
@@ -29,7 +35,15 @@ class Cell
 
   def render(default = false)
     if default == true && empty == false
-      'S'
+      if @fired_upon == true
+        if @ship.health > 0
+          'H'
+        else 
+          'X'
+        end
+      else
+        'S'
+      end
     elsif @fired_upon == false
       '.'
     elsif @empty == true && @fired_upon == true
