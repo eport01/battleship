@@ -76,8 +76,39 @@ class Game
 
 
   def results 
-    puts "Your shot on #{@u_input} was a #{@computer.game_board.cells[@u_input].render}."
-    puts "My shot on #{@c_input} was a #{@user.game_board.cells[@c_input].render}."
+    # if @computer.game_board.cells[@u_input].render == 'M'
+    #   puts 'miss'
+    # elsif @computer.game_board.cells[@u_input].render == 'H'
+    #   puts 'hit'
+    # elsif @computer.game_board.cells[@u_input].render == 'X'
+    #   puts 'hit. The ship has sunk!'
+
+    #   #all cells for ship are X means it's sunk
+    # end
+
+
+
+
+    # puts "Your shot on #{@u_input} was a #{@computer.game_board.cells[@u_input].render}."
+    # puts "My shot on #{@c_input} was a #{@user.game_board.cells[@c_input].render}."
+
+    #######
+    if @computer.game_board.cells[@u_input].render == "M"
+      puts "Your shot on #{@u_input} was a miss."
+    elsif @computer.game_board.cells[@u_input].render == "H"
+      puts "Your shot on #{@u_input} was a hit."
+    elsif @computer.game_board.cells[@u_input].render == "X"
+      puts "My shot on #{@u_input} was a hit. The ship has sunk!"
+    end
+
+    if @user.game_board.cells[@c_input].render == "M"
+      puts "My shot on #{@c_input} was a miss."
+    elsif @user.game_board.cells[@c_input].render == "H"
+      puts "My shot on #{@c_input} was a hit."
+    elsif @user.game_board.cells[@c_input].render == "X"
+      puts "My shot on #{@c_input} was a hit. The ship has sunk!"
+    end
+  
 
   end 
 
