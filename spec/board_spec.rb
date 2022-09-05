@@ -116,16 +116,5 @@ RSpec.describe Board do
       "C . . . . \n" +
       "D . . . . \n")
   end
-
-#   it 'the computers ship placement can be randomized' do 
-#     board = Board.new
-#     cruiser = Ship.new("Cruiser", 3)
-#     submarine = Ship.new("Submarine", 2)
-#     s_coord_array = board.cells.keys.sample(2)
-# require 'pry';binding.pry 
-#     expect(board.valid_placement?(submarine, s_coord_array)).to eq()
-
-#   end 
-
 end
 

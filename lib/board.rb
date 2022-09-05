@@ -1,7 +1,3 @@
-# require './lib/cell'
-# require './lib/ship'
-
-
 class Board
 
   attr_reader :cells, :first_consecutive, :valid_placement, :valid, :coord_array 

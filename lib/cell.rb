@@ -15,7 +15,6 @@ class Cell
     @empty = true
     @ship = nil
     @fired_upon = false
-    
   end
 
   def place_ship(ship_object)
@@ -24,8 +23,8 @@ class Cell
   end
 
   def fired_upon?
-      @fired_upon
-    end
+    @fired_upon
+  end
 
   def fire_upon
     @fired_upon = true
@@ -45,8 +44,6 @@ class Cell
       else
         'S'
       end
-    
-
     elsif @fired_upon == false
       '.'
     elsif @empty == true && @fired_upon == true

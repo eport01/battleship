@@ -20,18 +20,11 @@ RSpec.describe Player do
     submarine = Ship.new("Submarine", 2)
     user = Player.new('User')
     computer = Player.new('Computer')
-    # s_coord_array = board.cells.keys.sample(2)
-# require 'pry';binding.pry  
+    
     board.render 
-    expect(user.random_placement_cruiser).to eq(@coord_array)
-    expect(user.random_placement_submarine).to eq(@sub_array)
+    computer.random_placement_cruiser
+    computer.random_placement_submarine
+    expect(computer.has_lost).to eq(false)
 
   end 
-
-
-
-
-
-# user.game_board.cells 
-
 end 

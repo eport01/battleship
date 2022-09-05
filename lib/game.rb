@@ -32,7 +32,6 @@ class Game
     end
   end 
 
-
   def turn
     turn_count = 1
     while @user.has_lost == false && @computer.has_lost == false  
@@ -41,14 +40,12 @@ class Game
       puts @computer.game_board.render
       puts "====PLAYER BOARD===="
       puts @user.game_board.render(true)
-      
       user_shot
       computer_shot
       results
-      
-    # GAME ENDS WHEN ETHIER COMPUTER SHIPS OR PLAYER SHIPS ALL SUNK
       turn_count += 1
     end
+
     puts " "
     puts "====COMPUTER BOARD==== "
     puts @computer.game_board.render
@@ -69,13 +66,6 @@ class Game
       "It's a tie! Play again! \n" +
       "******************"
     end
-
-    
-
-
-
-
-
   end
 
   def computer_shot
@@ -102,7 +92,6 @@ class Game
       end
     end
   end 
-
 
   def results 
     puts " "
@@ -131,23 +120,6 @@ class Game
     @computer.game_board.cells.keys.map do |c_cell|
       @computer.game_board.cells[c_cell].make_empty 
     end 
-
-
-
-    # @user.game_board.cells.empty = true
-    # @user.game_board.cells.fired_upon = false
-    # @computer.game_board.cells.empty = true
-    # @computer.game_board.cells.fired_upon = false
-
   end
- 
-  
-
-
-  
-
-
 end 
 
-# game = Game.new
-# puts game.start 

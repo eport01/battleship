@@ -8,28 +8,13 @@ class Player
     @cruiser_random = cruiser_random
     @cruiser = Ship.new("Cruiser", 3)
     @submarine = Ship.new("Submarine", 2)
-   
-
   end 
 
-#  def computer_placement
-#   @board.render
-#   @random_placement_cruiser
-#   @random_placement_submarine
+  def reset_ship
+    @cruiser.reset
+    @submarine.reset
+  end
 
-#  end
-# def placement
-#   if @type == 'User'
-
-def reset_ship
-  @cruiser.reset
-  @submarine.reset
-end
-
-
-#   else 
-
-# end 
   def has_lost
     if @submarine.health == 0 && @cruiser.health == 0
       true 
@@ -38,15 +23,12 @@ end
     end 
   end 
 
-  
-
   def random_placement_cruiser
     @coord_array = []
     until @game_board.valid_placement?(@cruiser, @coord_array) == true 
       @coord_array = @game_board.cells.keys.sample(3)
     end 
     @game_board.place(@cruiser, @coord_array)
-      # puts @coord_array 
   end 
 
   def random_placement_submarine 
@@ -55,7 +37,6 @@ end
       @sub_array = @game_board.cells.keys.sample(2)
     end 
     @game_board.place(@submarine, @sub_array)
-      # puts @sub_array 
   end 
 
   def user_cruiser_placement
@@ -70,12 +51,11 @@ end
     "Enter the squares for the Cruiser (3 spaces):"
     check = false
     while check == false
-      input = gets.chomp # A1 A2 A3
+      input = gets.chomp 
       input = input.split(/\W+/)
       check = @game_board.valid_placement?(@cruiser, input)
       if check == true
         @game_board.place(@cruiser, input)
-        # puts @game_board.render(true)
       else
         puts "Those are invalid coordinates. Please try again:"
       end
@@ -86,7 +66,7 @@ end
       puts "Enter the squares for the Submarine (2 spaces):"
       check = false
       while check == false
-        input = gets.chomp # A1 A2 
+        input = gets.chomp  
         input = input.split(/\W+/)
         check = @game_board.valid_placement?(@submarine, input)
         if check == true
@@ -97,37 +77,8 @@ end
         end
       end
     end 
-
-
   end 
-
-
-
-
-
 end
-
-
-
-
-
-
-    #we want this in board class i think?
-    # cruiser = Ship.new("Cruiser", 3)
-    # submarine = Ship.new("Submarine", 2)
-    # cells.keys.sample(4)
-    # if board.valid_placement?(ship_object, coord_array) == true 
-    # computer places a cruiser ship w/ 3 coordinates that are valid and random
-    #computer places a submarine ship 2/ do coordinates that are valid and random 
-    
-
-
-
-    
-    # @board.valid_placement?("Cruiser", board.cells.sample)
-    # user.game_board.cells.keys.sample(4)
-    # user.game_board.valid_placement("Cruiser", board.cells.keys.sample(3))
-    # user.game_board.valid_placement?("Cruiser", user.game_board.cells.keys.sample(3))
 
  
 
