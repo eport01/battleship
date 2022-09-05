@@ -1,5 +1,5 @@
 class Game 
-  attr_reader :user, :computer
+  attr_reader :user, :computer, :turn 
   def initialize(computer, user)
     @computer = computer
     @user = user
@@ -14,6 +14,12 @@ class Game
       @computer.random_placement_cruiser
       @computer.random_placement_submarine
       @user.user_cruiser_placement
+      turn 
+      #@user.user_submarine_placement NEED TO MAKE
+      # while nobody has won
+      
+      #   @turn
+      # end
     elsif input.downcase == 'q' 
       puts "You chose to quit the game, bye bye"
     else
@@ -22,6 +28,14 @@ class Game
   end 
 
 
+  def turn
+    puts "====COMPUTER BOARD==== "
+    puts @computer.game_board.render
+    puts "====PLAYER BOARD===="
+    puts @user.game_board.render(true)
+
+
+  end
 
  
   # user.game_board.render 
