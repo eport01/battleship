@@ -11,6 +11,11 @@ class Ship
   def sunk?
     @sunk 
   end 
+
+  def reset
+    @health = length
+  end
+
  
 
   def hit

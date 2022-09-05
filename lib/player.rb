@@ -1,6 +1,6 @@
 
 class Player 
-  attr_reader :type, :game_board, :cruiser_random, :submarine_random, :random_placement_cruiser, :random_placement_submarine  
+  attr_reader :type, :game_board, :has_lost, :reset_ship, :cruiser_random, :submarine_random, :random_placement_cruiser, :random_placement_submarine  
 
   def initialize(type)
     @type = type 
@@ -21,11 +21,22 @@ class Player
 # def placement
 #   if @type == 'User'
 
+def reset_ship
+  @cruiser.reset
+  @submarine.reset
+end
 
 
 #   else 
 
 # end 
+  def has_lost
+    if @submarine.health == 0 && @cruiser.health == 0
+      true 
+    else
+      false  
+    end 
+  end 
 
   
 
@@ -64,7 +75,7 @@ class Player
       check = @game_board.valid_placement?(@cruiser, input)
       if check == true
         @game_board.place(@cruiser, input)
-        puts @game_board.render(true)
+        # puts @game_board.render(true)
       else
         puts "Those are invalid coordinates. Please try again:"
       end

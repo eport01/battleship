@@ -19,8 +19,8 @@ require './player'
 
 
 ################
-cruiser = Ship.new("Cruiser", 3)
-submarine = Ship.new("Submarine", 2)
+# cruiser = Ship.new("Cruiser", 3)
+# submarine = Ship.new("Submarine", 2)
 computer = Player.new('Computer')
 user = Player.new('User')
 game = Game.new(computer, user)

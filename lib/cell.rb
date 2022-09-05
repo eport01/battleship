@@ -11,6 +11,13 @@ class Cell
     @empty
   end
 
+  def make_empty
+    @empty = true
+    @ship = nil
+    @fired_upon = false
+    
+  end
+
   def place_ship(ship_object)
     @ship = ship_object
     @empty = false
