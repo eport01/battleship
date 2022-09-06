@@ -1,40 +1,45 @@
-class Game 
-  attr_reader :user, :computer, :turn, :user_shot, :computer_shot, :results 
+class Game
+  attr_reader :user,
+              :computer,
+              :turn,
+              :user_shot,
+              :computer_shot,
+              :results
   def initialize(computer, user)
     @computer = computer
     @user = user
 
-  end 
+  end
   def start
     start_input = "l"
     until start_input == "q"
       puts "Welcome to BATTLESHIP \n" +
        "Enter p to play. Enter q to quit."
-       start_input = gets.chomp 
+       start_input = gets.chomp
 
-       if start_input.downcase == 'p' 
+       if start_input.downcase == 'p'
          @computer.random_placement_cruiser
          @computer.random_placement_submarine
          @user.user_cruiser_placement
-         @user.user_submarine_placement 
-         turn 
+         @user.user_submarine_placement
+         turn
          clear_board
          @user.reset_ship
-         @computer.reset_ship 
+         @computer.reset_ship
          @user.has_lost
          @computer.has_lost
 
-       elsif start_input.downcase == 'q' 
+       elsif start_input.downcase == 'q'
          puts "You chose to quit the game, bye bye"
        else
          puts "Entry invalid. Please enter 'p' for play or 'q' for quit."
-       end 
+       end
     end
-  end 
+  end
 
   def turn
     turn_count = 1
-    while @user.has_lost == false && @computer.has_lost == false  
+    while @user.has_lost == false && @computer.has_lost == false
       puts "+++++++++ TURN #{turn_count} +++++++++++"
       puts "====COMPUTER BOARD==== "
       puts @computer.game_board.render
@@ -53,15 +58,15 @@ class Game
     puts @user.game_board.render(true)
     puts " "
 
-    if @user.has_lost == true && @computer.has_lost == false 
+    if @user.has_lost == true && @computer.has_lost == false
       puts "****************** \n" +
       "Good game! I won! \n" +
       "******************"
-    elsif  @computer.has_lost == true && @user.has_lost == false 
+    elsif  @computer.has_lost == true && @user.has_lost == false
       puts "****************** \n" +
       "Good game! You won! \n" +
       "******************"
-    elsif  @computer.has_lost == true && @user.has_lost == true 
+    elsif  @computer.has_lost == true && @user.has_lost == true
       puts "****************** \n" +
       "It's a tie! Play again! \n" +
       "******************"
@@ -76,8 +81,8 @@ class Game
         @user.game_board.cells[@c_input].fire_upon
         c_input_check = true
       end
-    end 
-  end 
+    end
+  end
 
   def user_shot
     puts "Enter the coordinate for your shot:"
@@ -91,9 +96,9 @@ class Game
         puts "Please enter a valid coordinate"
       end
     end
-  end 
+  end
 
-  def results 
+  def results
     puts " "
     if @computer.game_board.cells[@u_input].render == "M"
       puts "Your shot on #{@u_input} was a miss."
@@ -111,15 +116,14 @@ class Game
       puts "My shot on #{@c_input} was a hit. The ship has sunk!"
     end
     puts " "
-  end 
-
-  def clear_board 
-    @user.game_board.cells.keys.map do |a_cell|
-      @user.game_board.cells[a_cell].make_empty 
-    end 
-    @computer.game_board.cells.keys.map do |c_cell|
-      @computer.game_board.cells[c_cell].make_empty 
-    end 
   end
-end 
 
+  def clear_board
+    @user.game_board.cells.keys.map do |a_cell|
+      @user.game_board.cells[a_cell].make_empty
+    end
+    @computer.game_board.cells.keys.map do |c_cell|
+      @computer.game_board.cells[c_cell].make_empty
+    end
+  end
+end

@@ -1,5 +1,8 @@
 class Cell
-  attr_reader :coordinate, :empty, :ship, :fired_upon
+  attr_reader :coordinate,
+              :empty,
+              :ship,
+              :fired_upon
   def initialize(coordinate)
     @coordinate = coordinate
     @empty = true
@@ -38,7 +41,7 @@ class Cell
       if @fired_upon == true
         if @ship.health > 0
           'H'
-        else 
+        else
           'X'
         end
       else
