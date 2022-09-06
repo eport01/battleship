@@ -1,6 +1,8 @@
+require './cell'
+
 class Board
 
-  attr_reader :cells, :first_consecutive, :valid_placement, :valid, :coord_array 
+  attr_reader :cells, :first_consecutive, :valid_placement, :valid, :coord_array
   def initialize
     @cells = {
       "A1" => Cell.new("A1"),
@@ -18,7 +20,7 @@ class Board
       "D1" => Cell.new("D1"),
       "D2" => Cell.new("D2"),
       "D3" => Cell.new("D3"),
-      "D4" => Cell.new("D4")} 
+      "D4" => Cell.new("D4")}
   end
 
   def valid_coordinate?(coordinate)
@@ -64,8 +66,3 @@ class Board
       "D #{cells['D1'].render(show_ships)} #{cells['D2'].render(show_ships)} #{cells['D3'].render(show_ships)} #{cells['D4'].render(show_ships)} \n"
   end
 end
-
-
-
-    
-
