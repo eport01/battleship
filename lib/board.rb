@@ -2,7 +2,11 @@ require './cell'
 
 class Board
 
-  attr_reader :cells, :first_consecutive, :valid_placement, :valid, :coord_array
+  attr_reader :cells,
+              :first_consecutive,
+              :valid_placement,
+              :valid,
+              :coord_array
   def initialize
     @cells = {
       "A1" => Cell.new("A1"),

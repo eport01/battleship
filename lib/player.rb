@@ -1,6 +1,15 @@
 
 class Player
-  attr_reader :type, :game_board, :has_lost, :reset_ship, :cruiser_random, :submarine_random, :random_placement_cruiser, :random_placement_submarine, :cruiser, :submarine
+  attr_reader :type,
+              :game_board,
+              :has_lost,
+              :reset_ship,
+              :cruiser_random,
+              :submarine_random,
+              :random_placement_cruiser,
+              :random_placement_submarine,
+              :cruiser,
+              :submarine
 
   def initialize(type)
     @type = type
